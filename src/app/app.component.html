@@ -1,0 +1,18 @@
+<mat-form-field appearance="outline">
+  <mat-label>discord log text</mat-label>
+  <textarea [formControl]="chatLogCtrl" #chatLogText matInput></textarea>
+</mat-form-field>
+
+<mat-card>
+  <pre #output>
+    {{ chatLogText.value | json}}
+  </pre>
+</mat-card>
+<mat-card>
+  <pre>
+    {{ toBase64(output.value) }}
+  </pre>
+</mat-card>
+<button [cdkCopyToClipboard]="" mat-icon-button>
+  <mat-icon>copy_all</mat-icon>
+</button>
