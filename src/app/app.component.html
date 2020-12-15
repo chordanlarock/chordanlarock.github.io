@@ -1,18 +1,57 @@
-<mat-form-field appearance="outline">
-  <mat-label>discord log text</mat-label>
-  <textarea [formControl]="chatLogCtrl" #chatLogText matInput></textarea>
-</mat-form-field>
+<div class="grid">
 
-<mat-card>
-  <pre #output>
-    {{ chatLogText.value | json}}
-  </pre>
-</mat-card>
-<mat-card>
-  <pre>
-    {{ toBase64(output.value) }}
-  </pre>
-</mat-card>
-<button [cdkCopyToClipboard]="" mat-icon-button>
-  <mat-icon>copy_all</mat-icon>
-</button>
+  <mat-toolbar>
+    <mat-icon></mat-icon>
+    <span>gfbagel's discord exporter for objection.lol</span>
+  </mat-toolbar>
+
+  <div class="grid" style="padding: 50px">
+    <mat-form-field appearance="outline">
+      <mat-label>discord log text</mat-label>
+      <textarea matInput
+                #chatLogText
+                [matTextareaAutosize]="true"
+                [matAutosizeMinRows]="10"
+                [cdkAutosizeMaxRows]="50"
+                [formControl]="chatLogCtrl"
+      ></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Character for</mat-label>
+      <input matInput [formControl]="chatLogCtrl"/>
+    </mat-form-field>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>JSON preview</mat-card-title>
+        <mat-card-subtitle>Format before encoding</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <code #output>
+          {{ chatLogText.value}}
+        </code>
+      </mat-card-content>
+    </mat-card>
+
+    <br/>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Exported base64</mat-card-title>
+        <mat-card-subtitle>This can be saved into a .objection file for loading</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <code #hashText>
+          {{ toBase64(output.innerText.toString()) }}
+        </code>
+      </mat-card-content>
+      <mat-card-actions>
+        <button [cdkCopyToClipboard]="hashText.innerText.toString()" mat-icon-button>
+          <mat-icon>copy_all</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
