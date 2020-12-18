@@ -12,7 +12,7 @@
                 #chatLogText
                 [matTextareaAutosize]="true"
                 [matAutosizeMinRows]="10"
-                [cdkAutosizeMaxRows]="50"
+                [matAutosizeMaxRows]="20"
                 [formControl]="chatLogCtrl"
       ></textarea>
     </mat-form-field>
@@ -49,7 +49,7 @@
         <mat-card-subtitle>Format before encoding</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <mat-card class="grey">
+        <mat-card class="grey scrollable-400">
           <pre #output>
             {{ generatedFrames | json}}
           </pre>
@@ -65,7 +65,7 @@
         <mat-card-subtitle>This can be saved into a .objection file for loading</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <mat-card class="grey">
+        <mat-card class="grey scrollable-400">
           <code #hashText>
             {{ toBase64(output.innerText.toString()) }}
           </code>
