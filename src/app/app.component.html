@@ -21,18 +21,20 @@
     <br/>
 
     <mat-card class="grid">
-      <div *ngFor="let user of potentialUsers; let i = index" >
+      <div *ngFor="let user of usernamesList; let i = index" >
         <mat-form-field appearance="outline">
           <mat-label>Character for {{user}}</mat-label>
           <input type="text"
                  [placeholder]="'Character for ' + user"
                  matInput
-                 [formControl]="userCharacterCtrls.controls[i]"
+                 [formControl]="_getUserCharacterControls()[i]"
                  [matAutocomplete]="auto">
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of characterOptions" [value]="option">
-              {{option}}
-            </mat-option>
+            <mat-optgroup *ngFor="let group of characterIdList" [label]="group.groupName">
+              <mat-option *ngFor="let character of group.characters" [value]="character.poseId">
+                {{character.name}}
+              </mat-option>
+            </mat-optgroup>
           </mat-autocomplete>
         </mat-form-field>
       </div>
