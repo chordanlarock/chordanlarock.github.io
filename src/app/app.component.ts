@@ -56,8 +56,16 @@ export class AppComponent implements OnInit {
     const userMatchGroupIdx = 2;
     const msgMatchGroupIdx = 3;
     while (match != null) {
-      this.usernamesList.push(match[userMatchGroupIdx]);
-      this.generatedFrames.push(new DialogFrame(match[msgMatchGroupIdx], -1, match[userMatchGroupIdx]));
+      const detectedUsername = match[userMatchGroupIdx];
+      const detectedDialogText = match[msgMatchGroupIdx];
+
+      const splitDialog = detectedDialogText.split('\n');
+
+      splitDialog.forEach(msgLine => {
+        this.generatedFrames.push(new DialogFrame(msgLine, -1, detectedUsername));
+      });
+
+      this.usernamesList.push(detectedUsername);
       match = this.discordRegex.exec(text);
     }
 
