@@ -41,7 +41,19 @@ export const characterGroups: CharacterGroup[] = [
       }, {
         name: 'Klavier Gavin',
         poseId: 65,
-      },
+      }, {
+        name: 'Franziska von Karma',
+        poseId: 24,
+      }, {
+        name: 'Godot',
+        poseId: 17,
+      }, {
+        name: 'Manfred von Karma',
+        poseId: 27,
+      }, {
+        name: 'Winston Payne',
+        poseId: 19,
+      }
     ]
   }, {
     groupName: 'Defense Counsel',
@@ -53,10 +65,22 @@ export const characterGroups: CharacterGroup[] = [
     ]
   }, {
     groupName: 'Judge',
-    characters: []
+    characters: [{
+      name: 'Judge',
+      poseId: 18,
+    }]
   }, {
     groupName: 'Witnesses',
-    characters: []
+    characters: [{
+      name: 'April May',
+      poseId: 31,
+    }, {
+      name: 'Damon Gant',
+      poseId: 92,
+    }, {
+      name: 'Dick Gumshoe',
+      poseId: 13,
+    }]
   },
   {
     groupName: 'Gallery',
