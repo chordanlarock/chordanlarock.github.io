@@ -10,7 +10,6 @@ import {characterGroups} from './character_ids';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class AppComponent implements OnInit {
-
   static userRegex = '((.*)(?:(?:\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d)|(?:(?:Yesterday|Today) at (?:(?:1[0-2]|0?[1-9]):(?:[0-5][0-9]) ?(?:[AaPp][Mm]))))\\n?)';
   discordRegex = new RegExp(`${AppComponent.userRegex}((?:(?:[\\s\\S]*?)(?=${AppComponent.userRegex}))|(?:[\\s\\S]*))`, 'g');
 
@@ -80,6 +79,15 @@ export class AppComponent implements OnInit {
 
   _getUserCharacterControls(): UntypedFormControl[] {
     return this.userCharacterCtrls.controls as UntypedFormControl[];
+  }
+
+  downloadFile(fileText: string) {
+    const tempElement = document.createElement('a');
+    tempElement.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(fileText)}`);
+    tempElement.setAttribute('download', 'generated-discord-AA.objection');
+
+    var event = new MouseEvent("click");
+    tempElement.dispatchEvent(event);
   }
 }
 

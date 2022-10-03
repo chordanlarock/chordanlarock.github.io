@@ -75,6 +75,9 @@
         <button [cdkCopyToClipboard]="hashText.innerText.toString()" mat-icon-button>
           <mat-icon>copy_all</mat-icon>
         </button>
+
+        <button mat-button (click)="downloadFile(hashText.innerText)">DOWNLOAD AS FILE <mat-icon>file_download</mat-icon></button>
+        
       </mat-card-actions>
     </mat-card>
   </div>
