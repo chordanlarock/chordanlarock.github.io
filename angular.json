@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/objection-chatlog-gen",
+            "outputPath": "docs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -116,7 +116,6 @@
       }
     }
   },
-  "defaultProject": "objection-chatlog-gen",
   "cli": {
     "analytics": "f13f352c-eca2-45d3-a447-ee82df7e535a"
   }

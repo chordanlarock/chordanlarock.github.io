@@ -1,6 +1,6 @@
 /* tslint:disable:no-trailing-whitespace */
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormArray, FormControl} from '@angular/forms';
+import {UntypedFormArray, UntypedFormControl} from '@angular/forms';
 import {characterGroups} from './character_ids';
 
 @Component({
@@ -15,10 +15,10 @@ export class AppComponent implements OnInit {
   discordRegex = new RegExp(`${AppComponent.userRegex}((?:(?:[\\s\\S]*?)(?=${AppComponent.userRegex}))|(?:[\\s\\S]*))`, 'g');
 
   title = 'objection-chatlog-gen';
-  chatLogCtrl: FormControl = new FormControl(undefined);
+  chatLogCtrl: UntypedFormControl = new UntypedFormControl(undefined);
   generatedFrames: DialogFrame[] = [];
   usernamesList: string[] = [];
-  userCharacterCtrls = new FormArray([]);
+  userCharacterCtrls = new UntypedFormArray([]);
   characterOptions: string[] = ['One', 'Two', 'Three'];
 
   characterIdList = characterGroups;
@@ -72,14 +72,14 @@ export class AppComponent implements OnInit {
 
     this.usernamesList = [...new Set(this.usernamesList)];
     this.usernamesList.map(() => {
-      this.userCharacterCtrls.push(new FormControl(''));
+      this.userCharacterCtrls.push(new UntypedFormControl(''));
     });
 
     // remember to take emojis out before BTOA
   }
 
-  _getUserCharacterControls(): FormControl[] {
-    return this.userCharacterCtrls.controls as FormControl[];
+  _getUserCharacterControls(): UntypedFormControl[] {
+    return this.userCharacterCtrls.controls as UntypedFormControl[];
   }
 }
 
