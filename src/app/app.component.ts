@@ -10,6 +10,9 @@ import {characterGroups} from './character_ids';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class AppComponent implements OnInit {
+foo() {
+  console.log(JSON.parse(JSON.stringify(this.chatLogCtrl)));
+}
   static userRegex = '((.*)(?:(?:\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d)|(?:(?:Yesterday|Today) at (?:(?:1[0-2]|0?[1-9]):(?:[0-5][0-9]) ?(?:[AaPp][Mm]))))\\n?)';
   discordRegex = new RegExp(`${AppComponent.userRegex}((?:(?:[\\s\\S]*?)(?=${AppComponent.userRegex}))|(?:[\\s\\S]*))`, 'g');
 
